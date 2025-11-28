@@ -1453,128 +1453,58 @@ products: {
 <a href="#contact" class="mt-8 inline-block bg-white text-brand-base py-3 px-10 text-sm font-semibold cta-button uppercase tracking-wider">Contact Us</a>
 </div>
                 </section>
-<div id="contact-modal" class="relative z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-  
-  <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity backdrop-blur-sm"></div>
-
-  <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-      
-      <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-6xl border border-brand-border">
+<div class="bg-brand-bg p-8 rounded-lg border border-brand-border">
+    <form id="contact-form" action="https://formspree.io/f/xkgpdyay" method="POST" class="space-y-4">
         
-        <div class="absolute right-0 top-0 pr-4 pt-4 z-20">
-          <button type="button" onclick="toggleContactModal()" class="rounded-md bg-white text-gray-400 hover:text-brand-base focus:outline-none focus:ring-2 focus:ring-brand-base focus:ring-offset-2">
-            <span class="sr-only">Close</span>
-            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+        <div>
+            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+            <input type="text" name="name" id="name" placeholder="Jane Smith" class="w-full mt-1 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-base" required>
         </div>
-
-        <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 md:p-12">
-            <div class="container mx-auto">
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    
-                    <div class="pr-0 md:pr-8">
-                        <p class="text-sm font-semibold uppercase text-brand-base">WE'RE HERE TO HELP YOU</p>
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Get in Touch With Us</h2>
-                        <p class="text-gray-600 mt-4 text-lg">
-                            Looking for top-quality lifestyle products or have a question for the memuci team? Reach out to us.
-                        </p>
-                        
-                        <div class="mt-8 space-y-6">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 h-12 w-12 bg-brand-pink-bg text-brand-base rounded-full flex items-center justify-center">
-                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                    </svg>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="text-lg font-semibold text-gray-900">E-mail</h4>
-                                    <a href="mailto:hello@memucilifestyle.com" class="text-gray-600 hover:text-brand-base">info@memucilifestyle.com</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 h-12 w-12 bg-brand-pink-bg text-brand-base rounded-full flex items-center justify-center">
-                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                                    </svg>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="text-lg font-semibold text-gray-900">Phone Number</h4>
-                                    <a href="tel:+254708773943" class="text-gray-600 hover:text-brand-base">+254 708 773 943</a>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 h-12 w-12 bg-brand-pink-bg text-brand-base rounded-full flex items-center justify-center">
-                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zM7.062 18.683a.5.5 0 0 0 .687.32l1.968-.983a.5.5 0 0 1 .59.057c1.48 1.159 3.264 1.808 5.117 1.807 5.48.002 9.938-4.455 9.94-9.938.002-5.481-4.456-9.938-9.938-9.938-5.481 0-9.938 4.456-9.938 9.938 0 2.06.632 4.02 1.798 5.676a.5.5 0 0 1 .046.586l-1.03 2.053a.5.5 0 0 0 .317.688l2.254 1.127zM11.991 18.423c-3.626 0-6.58-2.955-6.58-6.58s2.954-6.58 6.58-6.58c3.625 0 6.58 2.954 6.58 6.58s-2.955 6.58-6.58 6.58zM8.532 9.043c-.124-.27-.268-.27-.402-.276s-.347-.015-.522-.015c-.175 0-.462.067-.702.338-.24.27-.942.924-.942 2.259s.964 2.623 1.099 2.8s1.957 3.09 4.752 4.195c2.316.883 2.8.704 3.29.658.49-.046 1.575-.641 1.8-1.256.225-.615.225-1.141.15-1.256-.075-.114-.26-.175-.522-.3s-1.575-.77-1.815-.86c-.24-.09-.415-.135-.59.135-.175.27-.687.86-.842 1.03-.155.175-.31.195-.572.06-.26-.135-1.14-.42-2.17-1.335-.805-.71-1.34-1.59-1.495-1.86s-.007-.41.132-.54c.125-.114.28-.29.42-.435.135-.135.18-.225.27-.375.09-.15.045-.285-.022-.375-.068-.09-.59-.705-.81-1.65z"/>
-                                    </svg>
-                                </div>
-                                <div class="ml-4">
-                                    <a href="https://wa.me/254708773943" target="_blank" rel="noopener noreferrer">
-                                        <h4 class="text-lg font-semibold text-gray-900">WhatsApp</h4>
-                                        <p class="text-gray-600 hover:text-brand-base">+254 708 773 943</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-brand-bg p-8 rounded-lg border border-brand-border">
-                        <form action="https://formspree.io/f/xkgpdyay" method="POST" class="space-y-4">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                                <input type="text" name="name" id="name" placeholder="Jane Smith" class="w-full mt-1 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-base" required>
-                            </div>
-                            
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                                <input type="email" name="email" id="email" placeholder="you@example.com" class="w-full mt-1 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-base" required>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700">Phone <span class="text-xs text-gray-500">(Optional)</span></label>
-                                <div class="flex mt-1 space-x-2">
-                                    <input type="text" name="country_code" placeholder="+254" class="w-1/4 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-base">
-                                    <input type="tel" name="phone_number" placeholder="712 345 678" class="w-3/4 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-base">
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <label for="category" class="block text-sm font-medium text-gray-700">Topic</label>
-                                <select id="category" name="category" class="w-full mt-1 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-base" required>
-                                    <option value="">Select...</option>
-                                    <option value="product-inquiry">Product Inquiry</option>
-                                    <option value="order-support">Order Support</option>
-                                    <option value="partnerships">Partnerships</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                                <textarea id="message" name="message" rows="3" placeholder="Message..." class="w-full mt-1 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-base" required></textarea>
-                            </div>
-                            
-                            <div>
-                                <button type="submit" class="inline-flex items-center justify-center w-full px-6 py-3 rounded-md text-white font-semibold bg-brand-base hover:bg-brand-base/90 focus:outline-none transition-colors duration-300">
-                                    Send Message
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    
-                </div>
+        
+        <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" name="email" id="email" placeholder="you@example.com" class="w-full mt-1 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-base" required>
+        </div>
+        
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Phone <span class="text-xs text-gray-500">(Optional)</span></label>
+            <div class="flex mt-1 space-x-2">
+                <input type="text" name="country_code" placeholder="+254" class="w-1/4 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-base">
+                <input type="tel" name="phone_number" placeholder="712 345 678" class="w-3/4 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-base">
             </div>
         </div>
+        
+        <div>
+            <label for="category" class="block text-sm font-medium text-gray-700">Topic</label>
+            <select id="category" name="category" class="w-full mt-1 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-base" required>
+                <option value="">Select...</option>
+                <option value="product-inquiry">Product Inquiry</option>
+                <option value="order-support">Order Support</option>
+                <option value="partnerships">Partnerships</option>
+                <option value="other">Other</option>
+            </select>
         </div>
-    </div>
-  </div>
+        
+        <div>
+            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+            <textarea id="message" name="message" rows="3" placeholder="Message..." class="w-full mt-1 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-base" required></textarea>
+        </div>
+        
+        <div>
+            <button id="submit-btn" type="submit" class="inline-flex items-center justify-center w-full px-6 py-3 rounded-md text-white font-semibold bg-brand-base hover:bg-brand-base/90 focus:outline-none transition-colors duration-300 disabled:opacity-70 disabled:cursor-not-allowed">
+                
+                <svg id="btn-spinner" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                
+                <span id="btn-text">Send Message</span>
+            </button>
+        </div>
+    </form>
 </div>
+
+
                 <section class="py-20 bg-white px-6 animate-on-scroll">
                     <div class="container mx-auto" x-data="{ activeTab: 'travels' }">
                         <div class="text-center mb-12">
@@ -3599,5 +3529,21 @@ if (pageId === 'product-page') {
             <strong>Chat with us</strong>
         </div>
     </a>
+    <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        // We do NOT prevent default here, because we want Formspree to take over.
+        // We just want to change the visual state immediately.
+        
+        const btn = document.getElementById('submit-btn');
+        const spinner = document.getElementById('btn-spinner');
+        const text = document.getElementById('btn-text');
+
+        // Change button look
+        btn.disabled = true; // Prevent double clicks
+        spinner.classList.remove('hidden'); // Show spinner
+        text.textContent = 'Sending...'; // Change text
+    });
+</script>
 </body>
 </html>
+
