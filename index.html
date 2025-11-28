@@ -3548,36 +3548,67 @@ if (pageId === 'product-page') {
     }
 </script>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // 1. Select all navigation links
-        const navLinks = document.querySelectorAll('.page-link');
+    document.addEventListener("DOMContentLoaded", function() {
+        var form = document.getElementById("contact-form");
         
-        // 2. Select all content sections (Make sure your Home/Shop also have the class 'page-section')
-        const allSections = document.querySelectorAll('.page-section');
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault(); // STOP page reload
+            
+            var btn = document.getElementById("submit-btn");
+            var spinner = document.getElementById("btn-spinner");
+            var btnText = document.getElementById("btn-text");
+            var status = document.getElementById("form-success");
+            var errorMsg = document.getElementById("form-error");
+            
+            // 1. Show Loading State
+            btn.disabled = true;
+            spinner.classList.remove("hidden");
+            btnText.innerText = "Sending...";
+            errorMsg.classList.add("hidden");
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
+            var data = new FormData(event.target);
+            
+            try {
+                // 2. Submit to Formspree via AJAX
+                let response = await fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
                 
-                // Get the ID of the page we want to show
-                const targetId = link.getAttribute('data-target');
-                const targetSection = document.getElementById(targetId);
-
-                if (targetSection) {
-                    // Hide ALL sections first
-                    allSections.forEach(section => {
-                        section.classList.add('hidden');
-                    });
-
-                    // Show ONLY the target section
-                    targetSection.classList.remove('hidden');
+                // 3. Handle Response
+                if (response.ok) {
+                    form.classList.add("hidden");   // Hide form
+                    status.classList.remove("hidden"); // Show success message
+                    form.reset(); 
                     
-                    // Scroll to top
-                    window.scrollTo(0, 0);
+                    // Reset button (in case they open modal again without refresh)
+                    btn.disabled = false;
+                    spinner.classList.add("hidden");
+                    btnText.innerText = "Send Message";
                 } else {
-                    console.error('Target section not found:', targetId);
+                    let data = await response.json();
+                    if (Object.hasOwn(data, 'errors')) {
+                        errorMsg.innerText = data["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        errorMsg.innerText = "Oops! There was a problem submitting your form";
+                    }
+                    errorMsg.classList.remove("hidden");
+                    
+                    // Reset button to allow retry
+                    btn.disabled = false;
+                    spinner.classList.add("hidden");
+                    btnText.innerText = "Try Again";
                 }
-            });
+            } catch (error) {
+                errorMsg.innerText = "Network error. Please try again.";
+                errorMsg.classList.remove("hidden");
+                btn.disabled = false;
+                spinner.classList.add("hidden");
+                btnText.innerText = "Try Again";
+            }
         });
     });
 </script>
@@ -3601,3 +3632,4 @@ if (pageId === 'product-page') {
     </a>
 </body>
 </html>
+
