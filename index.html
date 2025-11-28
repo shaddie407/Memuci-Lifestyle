@@ -3450,32 +3450,20 @@ if (pageId === 'product-page') {
     }
 </script>
 <script>
-    function toggleContactModal() {
-        const modal = document.getElementById('contact-modal');
-        // Toggle the hidden class to show/hide the modal
-        modal.classList.toggle('hidden');
+   document.getElementById('contact-form').addEventListener('submit', function(e) {
+        // We do NOT prevent default here, because we want Formspree to take over.
+        // We just want to change the visual state immediately.
         
-        // Optional: Prevent background scrolling when modal is open
-        if (!modal.classList.contains('hidden')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-    }
+        const btn = document.getElementById('submit-btn');
+        const spinner = document.getElementById('btn-spinner');
+        const text = document.getElementById('btn-text');
 
-    // Optional: Close modal if clicking outside the content area
-    window.onclick = function(event) {
-        const modal = document.getElementById('contact-modal');
-        // If the user clicks on the backdrop (the dark area), close the modal
-        // The modal container has an id of contact-modal, but the backdrop is actually the parent
-        // or we check if the target is the flex container that centers the modal
-        if (event.target.closest('#contact-modal') && !event.target.closest('.bg-white')) {
-            // Check if we are clicking strictly outside the white modal box
-             // This can be tricky with the current structure, simplified version:
-             // If you want strict click-outside-to-close, let me know, 
-             // otherwise the X button handles it safely.
-        }
-    }
+        // Change button look
+        btn.disabled = true; // Prevent double clicks
+        spinner.classList.remove('hidden'); // Show spinner
+        text.textContent = 'Sending...'; // Change text
+    });
+
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -3529,21 +3517,7 @@ if (pageId === 'product-page') {
             <strong>Chat with us</strong>
         </div>
     </a>
-    <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-        // We do NOT prevent default here, because we want Formspree to take over.
-        // We just want to change the visual state immediately.
-        
-        const btn = document.getElementById('submit-btn');
-        const spinner = document.getElementById('btn-spinner');
-        const text = document.getElementById('btn-text');
-
-        // Change button look
-        btn.disabled = true; // Prevent double clicks
-        spinner.classList.remove('hidden'); // Show spinner
-        text.textContent = 'Sending...'; // Change text
-    });
-</script>
 </body>
 </html>
+
 
